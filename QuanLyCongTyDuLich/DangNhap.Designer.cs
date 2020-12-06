@@ -1,7 +1,7 @@
 ﻿
 namespace QuanLyCongTyDuLich
 {
-    partial class Form1
+    partial class DangNhap
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace QuanLyCongTyDuLich
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DangNhap));
             this.HelpBut = new System.Windows.Forms.Button();
             this.UpBut = new System.Windows.Forms.Button();
             this.InBut = new System.Windows.Forms.Button();
@@ -115,6 +115,7 @@ namespace QuanLyCongTyDuLich
             this.PassBox.PasswordChar = '*';
             this.PassBox.Size = new System.Drawing.Size(119, 20);
             this.PassBox.TabIndex = 23;
+            this.PassBox.Text = "28121999";
             this.PassBox.TextChanged += new System.EventHandler(this.PassBox_TextChanged);
             // 
             // UserBox
@@ -123,9 +124,10 @@ namespace QuanLyCongTyDuLich
             this.UserBox.Name = "UserBox";
             this.UserBox.Size = new System.Drawing.Size(119, 20);
             this.UserBox.TabIndex = 22;
+            this.UserBox.Text = "cullen";
             this.UserBox.TextChanged += new System.EventHandler(this.UserBox_TextChanged);
             // 
-            // Form1
+            // DangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,7 +144,7 @@ namespace QuanLyCongTyDuLich
             this.Controls.Add(this.PassBox);
             this.Controls.Add(this.UserBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "DangNhap";
             this.Text = "Đăng Nhập";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);

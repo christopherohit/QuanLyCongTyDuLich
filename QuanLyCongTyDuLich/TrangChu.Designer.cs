@@ -33,7 +33,7 @@ namespace QuanLyCongTyDuLich
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrangChu));
             this.FutureTripGribView = new System.Windows.Forms.DataGridView();
             this.Agency_Tab = new System.Windows.Forms.TabPage();
-            this.ClientGridView = new System.Windows.Forms.DataGridView();
+            this.TripInAgencyGridView = new System.Windows.Forms.DataGridView();
             this.AgencyGribView = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +49,10 @@ namespace QuanLyCongTyDuLich
             this.globallyForQuestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.privacyAndLiceneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.portionTripClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.quanLyDuLichDataSet1 = new QuanLyCongTyDuLich.QuanLyDuLichDataSet1();
+            this.agencyForClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.quanLyDuLichDataSet = new QuanLyCongTyDuLich.QuanLyDuLichDataSet();
             this.FutureTrip_Tab = new System.Windows.Forms.TabPage();
             this.Agencies = new System.Windows.Forms.TabControl();
             this.Sale_Tab = new System.Windows.Forms.TabPage();
@@ -60,19 +64,22 @@ namespace QuanLyCongTyDuLich
             this.ForBibButton = new System.Windows.Forms.Button();
             this.OrderGribView = new System.Windows.Forms.DataGridView();
             this.CustomerGribView = new System.Windows.Forms.DataGridView();
-            this.quanLyDuLichDataSet = new QuanLyCongTyDuLich.QuanLyDuLichDataSet();
-            this.agencyForClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.accountBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.quanLyDuLichDataSet2 = new QuanLyCongTyDuLich.QuanLyDuLichDataSet2();
             this.agencyForClientTableAdapter = new QuanLyCongTyDuLich.QuanLyDuLichDataSetTableAdapters.AgencyForClientTableAdapter();
-            this.tenDaiLyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moTaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soLuongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.luotThichDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hinhAnhDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.portionTripClientTableAdapter = new QuanLyCongTyDuLich.QuanLyDuLichDataSet1TableAdapters.PortionTripClientTableAdapter();
+            this.accountTableAdapter = new QuanLyCongTyDuLich.QuanLyDuLichDataSet2TableAdapters.AccountTableAdapter();
+            this.NonWorking_Tab = new System.Windows.Forms.TabPage();
+            this.SoldOutGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.FutureTripGribView)).BeginInit();
             this.Agency_Tab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ClientGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TripInAgencyGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgencyGribView)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.portionTripClientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quanLyDuLichDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.agencyForClientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quanLyDuLichDataSet)).BeginInit();
             this.FutureTrip_Tab.SuspendLayout();
             this.Agencies.SuspendLayout();
             this.Sale_Tab.SuspendLayout();
@@ -80,8 +87,10 @@ namespace QuanLyCongTyDuLich
             this.Order_Tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrderGribView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerGribView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quanLyDuLichDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.agencyForClientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quanLyDuLichDataSet2)).BeginInit();
+            this.NonWorking_Tab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SoldOutGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // FutureTripGribView
@@ -89,45 +98,40 @@ namespace QuanLyCongTyDuLich
             this.FutureTripGribView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.FutureTripGribView.Location = new System.Drawing.Point(3, 6);
             this.FutureTripGribView.Name = "FutureTripGribView";
-            this.FutureTripGribView.Size = new System.Drawing.Size(855, 394);
+            this.FutureTripGribView.Size = new System.Drawing.Size(911, 409);
             this.FutureTripGribView.TabIndex = 0;
             // 
             // Agency_Tab
             // 
-            this.Agency_Tab.Controls.Add(this.ClientGridView);
+            this.Agency_Tab.Controls.Add(this.TripInAgencyGridView);
             this.Agency_Tab.Controls.Add(this.AgencyGribView);
             this.Agency_Tab.Controls.Add(this.menuStrip1);
             this.Agency_Tab.Location = new System.Drawing.Point(4, 22);
             this.Agency_Tab.Name = "Agency_Tab";
             this.Agency_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.Agency_Tab.Size = new System.Drawing.Size(864, 406);
+            this.Agency_Tab.Size = new System.Drawing.Size(920, 421);
             this.Agency_Tab.TabIndex = 0;
             this.Agency_Tab.Text = "Agencies";
             this.Agency_Tab.UseVisualStyleBackColor = true;
             // 
-            // ClientGridView
+            // TripInAgencyGridView
             // 
-            this.ClientGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ClientGridView.Location = new System.Drawing.Point(540, 30);
-            this.ClientGridView.Name = "ClientGridView";
-            this.ClientGridView.Size = new System.Drawing.Size(318, 370);
-            this.ClientGridView.TabIndex = 4;
+            this.TripInAgencyGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TripInAgencyGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TripInAgencyGridView.Location = new System.Drawing.Point(618, 30);
+            this.TripInAgencyGridView.Name = "TripInAgencyGridView";
+            this.TripInAgencyGridView.Size = new System.Drawing.Size(297, 370);
+            this.TripInAgencyGridView.TabIndex = 4;
             // 
             // AgencyGribView
             // 
-            this.AgencyGribView.AutoGenerateColumns = false;
+            this.AgencyGribView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.AgencyGribView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AgencyGribView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.tenDaiLyDataGridViewTextBoxColumn,
-            this.moTaDataGridViewTextBoxColumn,
-            this.soLuongDataGridViewTextBoxColumn,
-            this.luotThichDataGridViewTextBoxColumn,
-            this.hinhAnhDataGridViewImageColumn});
-            this.AgencyGribView.DataSource = this.agencyForClientBindingSource;
             this.AgencyGribView.Location = new System.Drawing.Point(6, 30);
             this.AgencyGribView.Name = "AgencyGribView";
-            this.AgencyGribView.Size = new System.Drawing.Size(528, 370);
+            this.AgencyGribView.Size = new System.Drawing.Size(606, 370);
             this.AgencyGribView.TabIndex = 3;
+            this.AgencyGribView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AgencyGribView_CellClick);
             // 
             // menuStrip1
             // 
@@ -138,7 +142,7 @@ namespace QuanLyCongTyDuLich
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(3, 3);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(858, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(914, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -183,19 +187,20 @@ namespace QuanLyCongTyDuLich
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // helpToolStripMenuItem
@@ -214,24 +219,48 @@ namespace QuanLyCongTyDuLich
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.aboutToolStripMenuItem.Text = "About Software";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // globallyForQuestionToolStripMenuItem
             // 
             this.globallyForQuestionToolStripMenuItem.Name = "globallyForQuestionToolStripMenuItem";
             this.globallyForQuestionToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.globallyForQuestionToolStripMenuItem.Text = "Globally For Question";
+            this.globallyForQuestionToolStripMenuItem.Click += new System.EventHandler(this.globallyForQuestionToolStripMenuItem_Click);
             // 
             // aToolStripMenuItem
             // 
             this.aToolStripMenuItem.Name = "aToolStripMenuItem";
             this.aToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.aToolStripMenuItem.Text = "About Author";
+            this.aToolStripMenuItem.Click += new System.EventHandler(this.aToolStripMenuItem_Click);
             // 
             // privacyAndLiceneseToolStripMenuItem
             // 
             this.privacyAndLiceneseToolStripMenuItem.Name = "privacyAndLiceneseToolStripMenuItem";
             this.privacyAndLiceneseToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.privacyAndLiceneseToolStripMenuItem.Text = "Privacy And Licenese";
+            this.privacyAndLiceneseToolStripMenuItem.Click += new System.EventHandler(this.privacyAndLiceneseToolStripMenuItem_Click);
+            // 
+            // portionTripClientBindingSource
+            // 
+            this.portionTripClientBindingSource.DataMember = "PortionTripClient";
+            this.portionTripClientBindingSource.DataSource = this.quanLyDuLichDataSet1;
+            // 
+            // quanLyDuLichDataSet1
+            // 
+            this.quanLyDuLichDataSet1.DataSetName = "QuanLyDuLichDataSet1";
+            this.quanLyDuLichDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // agencyForClientBindingSource
+            // 
+            this.agencyForClientBindingSource.DataMember = "AgencyForClient";
+            this.agencyForClientBindingSource.DataSource = this.quanLyDuLichDataSet;
+            // 
+            // quanLyDuLichDataSet
+            // 
+            this.quanLyDuLichDataSet.DataSetName = "QuanLyDuLichDataSet";
+            this.quanLyDuLichDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // FutureTrip_Tab
             // 
@@ -240,7 +269,7 @@ namespace QuanLyCongTyDuLich
             this.FutureTrip_Tab.Location = new System.Drawing.Point(4, 22);
             this.FutureTrip_Tab.Name = "FutureTrip_Tab";
             this.FutureTrip_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.FutureTrip_Tab.Size = new System.Drawing.Size(864, 406);
+            this.FutureTrip_Tab.Size = new System.Drawing.Size(920, 421);
             this.FutureTrip_Tab.TabIndex = 1;
             this.FutureTrip_Tab.Text = "Future Trips";
             // 
@@ -249,11 +278,12 @@ namespace QuanLyCongTyDuLich
             this.Agencies.Controls.Add(this.Agency_Tab);
             this.Agencies.Controls.Add(this.FutureTrip_Tab);
             this.Agencies.Controls.Add(this.Sale_Tab);
+            this.Agencies.Controls.Add(this.NonWorking_Tab);
             this.Agencies.Controls.Add(this.Order_Tab);
             this.Agencies.Location = new System.Drawing.Point(3, 12);
             this.Agencies.Name = "Agencies";
             this.Agencies.SelectedIndex = 0;
-            this.Agencies.Size = new System.Drawing.Size(872, 432);
+            this.Agencies.Size = new System.Drawing.Size(928, 447);
             this.Agencies.TabIndex = 1;
             // 
             // Sale_Tab
@@ -263,7 +293,7 @@ namespace QuanLyCongTyDuLich
             this.Sale_Tab.Location = new System.Drawing.Point(4, 22);
             this.Sale_Tab.Name = "Sale_Tab";
             this.Sale_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.Sale_Tab.Size = new System.Drawing.Size(864, 406);
+            this.Sale_Tab.Size = new System.Drawing.Size(920, 406);
             this.Sale_Tab.TabIndex = 2;
             this.Sale_Tab.Text = "Hot Sales";
             // 
@@ -272,7 +302,7 @@ namespace QuanLyCongTyDuLich
             this.HotSaleGribView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HotSaleGribView.Location = new System.Drawing.Point(6, 6);
             this.HotSaleGribView.Name = "HotSaleGribView";
-            this.HotSaleGribView.Size = new System.Drawing.Size(852, 394);
+            this.HotSaleGribView.Size = new System.Drawing.Size(923, 394);
             this.HotSaleGribView.TabIndex = 0;
             // 
             // Order_Tab
@@ -287,7 +317,7 @@ namespace QuanLyCongTyDuLich
             this.Order_Tab.Location = new System.Drawing.Point(4, 22);
             this.Order_Tab.Name = "Order_Tab";
             this.Order_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.Order_Tab.Size = new System.Drawing.Size(864, 406);
+            this.Order_Tab.Size = new System.Drawing.Size(920, 406);
             this.Order_Tab.TabIndex = 3;
             this.Order_Tab.Text = "Orders";
             this.Order_Tab.UseVisualStyleBackColor = true;
@@ -327,13 +357,14 @@ namespace QuanLyCongTyDuLich
             this.ForBibButton.TabIndex = 1;
             this.ForBibButton.Text = "Forbid";
             this.ForBibButton.UseVisualStyleBackColor = true;
+            this.ForBibButton.Click += new System.EventHandler(this.ForBibButton_Click);
             // 
             // OrderGribView
             // 
             this.OrderGribView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.OrderGribView.Location = new System.Drawing.Point(309, 47);
+            this.OrderGribView.Location = new System.Drawing.Point(344, 47);
             this.OrderGribView.Name = "OrderGribView";
-            this.OrderGribView.Size = new System.Drawing.Size(549, 353);
+            this.OrderGribView.Size = new System.Drawing.Size(585, 353);
             this.OrderGribView.TabIndex = 0;
             // 
             // CustomerGribView
@@ -341,71 +372,73 @@ namespace QuanLyCongTyDuLich
             this.CustomerGribView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustomerGribView.Location = new System.Drawing.Point(6, 47);
             this.CustomerGribView.Name = "CustomerGribView";
-            this.CustomerGribView.Size = new System.Drawing.Size(297, 353);
+            this.CustomerGribView.Size = new System.Drawing.Size(332, 353);
             this.CustomerGribView.TabIndex = 0;
             // 
-            // quanLyDuLichDataSet
+            // accountBindingSource
             // 
-            this.quanLyDuLichDataSet.DataSetName = "QuanLyDuLichDataSet";
-            this.quanLyDuLichDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.accountBindingSource.DataMember = "Account";
+            this.accountBindingSource.DataSource = this.quanLyDuLichDataSet2;
             // 
-            // agencyForClientBindingSource
+            // quanLyDuLichDataSet2
             // 
-            this.agencyForClientBindingSource.DataMember = "AgencyForClient";
-            this.agencyForClientBindingSource.DataSource = this.quanLyDuLichDataSet;
+            this.quanLyDuLichDataSet2.DataSetName = "QuanLyDuLichDataSet2";
+            this.quanLyDuLichDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // agencyForClientTableAdapter
             // 
             this.agencyForClientTableAdapter.ClearBeforeFill = true;
             // 
-            // tenDaiLyDataGridViewTextBoxColumn
+            // portionTripClientTableAdapter
             // 
-            this.tenDaiLyDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tenDaiLyDataGridViewTextBoxColumn.DataPropertyName = "TenDaiLy";
-            this.tenDaiLyDataGridViewTextBoxColumn.HeaderText = "Tên Đại Lý";
-            this.tenDaiLyDataGridViewTextBoxColumn.Name = "tenDaiLyDataGridViewTextBoxColumn";
+            this.portionTripClientTableAdapter.ClearBeforeFill = true;
             // 
-            // moTaDataGridViewTextBoxColumn
+            // accountTableAdapter
             // 
-            this.moTaDataGridViewTextBoxColumn.DataPropertyName = "MoTa";
-            this.moTaDataGridViewTextBoxColumn.HeaderText = "Mô Tả";
-            this.moTaDataGridViewTextBoxColumn.Name = "moTaDataGridViewTextBoxColumn";
+            this.accountTableAdapter.ClearBeforeFill = true;
             // 
-            // soLuongDataGridViewTextBoxColumn
+            // NonWorking_Tab
             // 
-            this.soLuongDataGridViewTextBoxColumn.DataPropertyName = "SoLuong";
-            this.soLuongDataGridViewTextBoxColumn.HeaderText = "Số Lượng";
-            this.soLuongDataGridViewTextBoxColumn.Name = "soLuongDataGridViewTextBoxColumn";
+            this.NonWorking_Tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.NonWorking_Tab.Controls.Add(this.SoldOutGridView);
+            this.NonWorking_Tab.Location = new System.Drawing.Point(4, 22);
+            this.NonWorking_Tab.Name = "NonWorking_Tab";
+            this.NonWorking_Tab.Padding = new System.Windows.Forms.Padding(3);
+            this.NonWorking_Tab.Size = new System.Drawing.Size(920, 421);
+            this.NonWorking_Tab.TabIndex = 4;
+            this.NonWorking_Tab.Text = "Sold Out";
             // 
-            // luotThichDataGridViewTextBoxColumn
+            // SoldOutGridView
             // 
-            this.luotThichDataGridViewTextBoxColumn.DataPropertyName = "LuotThich";
-            this.luotThichDataGridViewTextBoxColumn.HeaderText = "Lượt Thích";
-            this.luotThichDataGridViewTextBoxColumn.Name = "luotThichDataGridViewTextBoxColumn";
-            // 
-            // hinhAnhDataGridViewImageColumn
-            // 
-            this.hinhAnhDataGridViewImageColumn.DataPropertyName = "HinhAnh";
-            this.hinhAnhDataGridViewImageColumn.HeaderText = "Hình Ảnh";
-            this.hinhAnhDataGridViewImageColumn.Name = "hinhAnhDataGridViewImageColumn";
+            this.SoldOutGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.SoldOutGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SoldOutGridView.Location = new System.Drawing.Point(7, 7);
+            this.SoldOutGridView.Name = "SoldOutGridView";
+            this.SoldOutGridView.Size = new System.Drawing.Size(907, 408);
+            this.SoldOutGridView.TabIndex = 0;
             // 
             // TrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(879, 471);
+            this.ClientSize = new System.Drawing.Size(934, 471);
             this.Controls.Add(this.Agencies);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TrangChu";
             this.Text = "Trang Chu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TrangChu_FormClosing);
             this.Load += new System.EventHandler(this.TrangChu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.FutureTripGribView)).EndInit();
             this.Agency_Tab.ResumeLayout(false);
             this.Agency_Tab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ClientGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TripInAgencyGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgencyGribView)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.portionTripClientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quanLyDuLichDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.agencyForClientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quanLyDuLichDataSet)).EndInit();
             this.FutureTrip_Tab.ResumeLayout(false);
             this.Agencies.ResumeLayout(false);
             this.Sale_Tab.ResumeLayout(false);
@@ -413,8 +446,10 @@ namespace QuanLyCongTyDuLich
             this.Order_Tab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OrderGribView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerGribView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quanLyDuLichDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.agencyForClientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quanLyDuLichDataSet2)).EndInit();
+            this.NonWorking_Tab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SoldOutGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -423,7 +458,7 @@ namespace QuanLyCongTyDuLich
 
         private System.Windows.Forms.DataGridView FutureTripGribView;
         private System.Windows.Forms.TabPage Agency_Tab;
-        private System.Windows.Forms.DataGridView ClientGridView;
+        private System.Windows.Forms.DataGridView TripInAgencyGridView;
         private System.Windows.Forms.DataGridView AgencyGribView;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -453,10 +488,13 @@ namespace QuanLyCongTyDuLich
         private QuanLyDuLichDataSet quanLyDuLichDataSet;
         private System.Windows.Forms.BindingSource agencyForClientBindingSource;
         private QuanLyDuLichDataSetTableAdapters.AgencyForClientTableAdapter agencyForClientTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenDaiLyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn moTaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soLuongDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn luotThichDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewImageColumn hinhAnhDataGridViewImageColumn;
+        private QuanLyDuLichDataSet1 quanLyDuLichDataSet1;
+        private System.Windows.Forms.BindingSource portionTripClientBindingSource;
+        private QuanLyDuLichDataSet1TableAdapters.PortionTripClientTableAdapter portionTripClientTableAdapter;
+        private QuanLyDuLichDataSet2 quanLyDuLichDataSet2;
+        private System.Windows.Forms.BindingSource accountBindingSource;
+        private QuanLyDuLichDataSet2TableAdapters.AccountTableAdapter accountTableAdapter;
+        private System.Windows.Forms.TabPage NonWorking_Tab;
+        private System.Windows.Forms.DataGridView SoldOutGridView;
     }
 }
