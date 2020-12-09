@@ -57,6 +57,8 @@ namespace QuanLyCongTyDuLich
             this.Agencies = new System.Windows.Forms.TabControl();
             this.Sale_Tab = new System.Windows.Forms.TabPage();
             this.HotSaleGribView = new System.Windows.Forms.DataGridView();
+            this.NonWorking_Tab = new System.Windows.Forms.TabPage();
+            this.SoldOutGridView = new System.Windows.Forms.DataGridView();
             this.Order_Tab = new System.Windows.Forms.TabPage();
             this.ExitButton = new System.Windows.Forms.Button();
             this.ViewOrder = new System.Windows.Forms.Button();
@@ -69,8 +71,6 @@ namespace QuanLyCongTyDuLich
             this.agencyForClientTableAdapter = new QuanLyCongTyDuLich.QuanLyDuLichDataSetTableAdapters.AgencyForClientTableAdapter();
             this.portionTripClientTableAdapter = new QuanLyCongTyDuLich.QuanLyDuLichDataSet1TableAdapters.PortionTripClientTableAdapter();
             this.accountTableAdapter = new QuanLyCongTyDuLich.QuanLyDuLichDataSet2TableAdapters.AccountTableAdapter();
-            this.NonWorking_Tab = new System.Windows.Forms.TabPage();
-            this.SoldOutGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.FutureTripGribView)).BeginInit();
             this.Agency_Tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TripInAgencyGridView)).BeginInit();
@@ -84,13 +84,13 @@ namespace QuanLyCongTyDuLich
             this.Agencies.SuspendLayout();
             this.Sale_Tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HotSaleGribView)).BeginInit();
+            this.NonWorking_Tab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SoldOutGridView)).BeginInit();
             this.Order_Tab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrderGribView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerGribView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanLyDuLichDataSet2)).BeginInit();
-            this.NonWorking_Tab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SoldOutGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // FutureTripGribView
@@ -122,6 +122,7 @@ namespace QuanLyCongTyDuLich
             this.TripInAgencyGridView.Name = "TripInAgencyGridView";
             this.TripInAgencyGridView.Size = new System.Drawing.Size(297, 370);
             this.TripInAgencyGridView.TabIndex = 4;
+            this.TripInAgencyGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TripInAgencyGridView_CellContentClick);
             // 
             // AgencyGribView
             // 
@@ -159,19 +160,19 @@ namespace QuanLyCongTyDuLich
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.loadToolStripMenuItem.Text = "Load";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // managementToolStripMenuItem
@@ -293,7 +294,7 @@ namespace QuanLyCongTyDuLich
             this.Sale_Tab.Location = new System.Drawing.Point(4, 22);
             this.Sale_Tab.Name = "Sale_Tab";
             this.Sale_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.Sale_Tab.Size = new System.Drawing.Size(920, 406);
+            this.Sale_Tab.Size = new System.Drawing.Size(920, 421);
             this.Sale_Tab.TabIndex = 2;
             this.Sale_Tab.Text = "Hot Sales";
             // 
@@ -304,6 +305,26 @@ namespace QuanLyCongTyDuLich
             this.HotSaleGribView.Name = "HotSaleGribView";
             this.HotSaleGribView.Size = new System.Drawing.Size(923, 394);
             this.HotSaleGribView.TabIndex = 0;
+            // 
+            // NonWorking_Tab
+            // 
+            this.NonWorking_Tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.NonWorking_Tab.Controls.Add(this.SoldOutGridView);
+            this.NonWorking_Tab.Location = new System.Drawing.Point(4, 22);
+            this.NonWorking_Tab.Name = "NonWorking_Tab";
+            this.NonWorking_Tab.Padding = new System.Windows.Forms.Padding(3);
+            this.NonWorking_Tab.Size = new System.Drawing.Size(920, 421);
+            this.NonWorking_Tab.TabIndex = 4;
+            this.NonWorking_Tab.Text = "Sold Out";
+            // 
+            // SoldOutGridView
+            // 
+            this.SoldOutGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.SoldOutGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SoldOutGridView.Location = new System.Drawing.Point(7, 7);
+            this.SoldOutGridView.Name = "SoldOutGridView";
+            this.SoldOutGridView.Size = new System.Drawing.Size(907, 408);
+            this.SoldOutGridView.TabIndex = 0;
             // 
             // Order_Tab
             // 
@@ -317,7 +338,7 @@ namespace QuanLyCongTyDuLich
             this.Order_Tab.Location = new System.Drawing.Point(4, 22);
             this.Order_Tab.Name = "Order_Tab";
             this.Order_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.Order_Tab.Size = new System.Drawing.Size(920, 406);
+            this.Order_Tab.Size = new System.Drawing.Size(920, 421);
             this.Order_Tab.TabIndex = 3;
             this.Order_Tab.Text = "Orders";
             this.Order_Tab.UseVisualStyleBackColor = true;
@@ -397,26 +418,6 @@ namespace QuanLyCongTyDuLich
             // 
             this.accountTableAdapter.ClearBeforeFill = true;
             // 
-            // NonWorking_Tab
-            // 
-            this.NonWorking_Tab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.NonWorking_Tab.Controls.Add(this.SoldOutGridView);
-            this.NonWorking_Tab.Location = new System.Drawing.Point(4, 22);
-            this.NonWorking_Tab.Name = "NonWorking_Tab";
-            this.NonWorking_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.NonWorking_Tab.Size = new System.Drawing.Size(920, 421);
-            this.NonWorking_Tab.TabIndex = 4;
-            this.NonWorking_Tab.Text = "Sold Out";
-            // 
-            // SoldOutGridView
-            // 
-            this.SoldOutGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.SoldOutGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SoldOutGridView.Location = new System.Drawing.Point(7, 7);
-            this.SoldOutGridView.Name = "SoldOutGridView";
-            this.SoldOutGridView.Size = new System.Drawing.Size(907, 408);
-            this.SoldOutGridView.TabIndex = 0;
-            // 
             // TrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,13 +444,13 @@ namespace QuanLyCongTyDuLich
             this.Agencies.ResumeLayout(false);
             this.Sale_Tab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HotSaleGribView)).EndInit();
+            this.NonWorking_Tab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SoldOutGridView)).EndInit();
             this.Order_Tab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OrderGribView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerGribView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanLyDuLichDataSet2)).EndInit();
-            this.NonWorking_Tab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SoldOutGridView)).EndInit();
             this.ResumeLayout(false);
 
         }

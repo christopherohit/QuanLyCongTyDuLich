@@ -91,7 +91,7 @@ namespace QuanLyCongTyDuLich
                     string conStr = "Data Source=DESKTOP-7CBSM7T\\HENDRICHS;Initial Catalog=QuanLyDuLich;Integrated Security=True";
                     SqlConnection con = new SqlConnection(conStr);
                    
-                    string query = "select * from Account where TenTaiKhoan = @tentaikhoan and MatKhau = @matkhau";
+                    string query = "select * from Account where AdminName = @tentaikhoan and PassWordAdmin = @matkhau";
                     SqlCommand command = new SqlCommand(query,con);
                     command.Parameters.AddWithValue("@tentaikhoan", nickname);
                     command.Parameters.AddWithValue("@matkhau", password);

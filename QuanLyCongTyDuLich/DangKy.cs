@@ -120,7 +120,7 @@ namespace QuanLyCongTyDuLich
                     secure = Convert.ToInt32(Admin_Pass.Text);
                     string pass = Secret_Code.Text;
                     SqlConnection con = new SqlConnection(cStr);
-                    string query = "select * from Account where TenTaiKhoan = @tentaikhoan ";
+                    string query = "select * from Account where AdminName = @tentaikhoan ";
                     SqlCommand sql = new SqlCommand(query , con);
                     sql.Parameters.AddWithValue("@tentaikhoan", fake_name);
                     DataTable data = new DataTable();
@@ -139,7 +139,7 @@ namespace QuanLyCongTyDuLich
                         if (pass == Pass_code)
                         {
                             SqlConnection connection = new SqlConnection(cStr);
-                            string query2 = $"Insert into Account (TenTaiKhoan , MatKhau) values (@TaiKhoan , @MatKhau);";
+                            string query2 = $"Insert into Account (AdminName , PassWordAdmin) values (@TaiKhoan , @MatKhau);";
                             SqlCommand command = new SqlCommand(query2, connection);
                             command.Parameters.AddWithValue("@TaiKhoan", Admin_acc.Text);
                             command.Parameters.AddWithValue("@MatKhau", Admin_Pass.Text);
