@@ -100,14 +100,14 @@ namespace QuanLyCongTyDuLich
                     a.Fill(data);
                     if (data.Rows.Count > 0)
                     {
-                        MessageBox.Show($"Hello, {nickname}! Hy vọng bạn có một ngày tót lành ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"Hello {nickname}! Hy vọng bạn có một ngày tốt lành ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Form aform = new TrangChu();
                         aform.Show();
                         this.Hide();
                     }
                     else
                     {
-                        MessageBox.Show("Xin tài khoản không có sẵn \n Xin vui Thu Lai", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Xin tài khoản không có sẵn \n Xin Vui Lòng Thử Lại ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         UserBox.Text = string.Empty;
                         PassBox.Text = string.Empty;
                     }
@@ -120,8 +120,9 @@ namespace QuanLyCongTyDuLich
         private void UpBut_Click(object sender, EventArgs e)
         {
             Form form = new DangKy();
-            form.Show();
             this.Hide();
+            form.Show();
+            
         }
 
         private void UserBox_TextChanged(object sender, EventArgs e)
@@ -142,7 +143,7 @@ namespace QuanLyCongTyDuLich
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            var res = MessageBox.Show("Bạn Có Thật Sự Muốn Thoát ?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            var res = MessageBox.Show("Bạn Có Thật Sự Muốn Thoát ?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, );
             switch (res)
             {
                 case DialogResult.OK:

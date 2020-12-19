@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -81,6 +85,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLyDuLichDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="QuanLyDuLichDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyDuLichDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyDuLichDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyDuLichDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ThemChuyem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThemChuyem.Designer.cs">
+      <DependentUpon>ThemChuyem.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,9 +125,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ThemChuyem.resx">
+      <DependentUpon>ThemChuyem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TrangChu.resx">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -149,6 +173,28 @@
     </None>
     <None Include="QuanLyDuLichDataSet2.xss">
       <DependentUpon>QuanLyDuLichDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyDuLichDataSet3.xsc">
+      <DependentUpon>QuanLyDuLichDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyDuLichDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLyDuLichDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyDuLichDataSet3.xss">
+      <DependentUpon>QuanLyDuLichDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyDuLichDataSet4.xsc">
+      <DependentUpon>QuanLyDuLichDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyDuLichDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLyDuLichDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyDuLichDataSet4.xss">
+      <DependentUpon>QuanLyDuLichDataSet4.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

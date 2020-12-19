@@ -23,15 +23,23 @@ namespace QuanLyCongTyDuLich
 
         private void TrangChu_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'quanLyDuLichDataSet4.InforBookTrip' table. You can move, or remove it, as needed.
+
+            // TODO: This line of code loads data into the 'quanLyDuLichDataSet3.InforBookTrip' table. You can move, or remove it, as needed.
+
+            // TODO: This line of code loads data into the 'quanLyDuLichDataSet3.AccountForClient' table. You can move, or remove it, as needed.
+
+            // TODO: This line of code loads data into the 'quanLyDuLichDataSet3.HuongDanvien' table. You can move, or remove it, as needed.
+
             // TODO: This line of code loads data into the 'quanLyDuLichDataSet2.Account' table. You can move, or remove it, as needed.
-            
+
             // TODO: This line of code loads data into the 'quanLyDuLichDataSet1.PortionTripClient' table. You can move, or remove it, as needed.
-            this.portionTripClientTableAdapter.Fill(this.quanLyDuLichDataSet1.PortionTripClient);
+
             // TODO: This line of code loads data into the 'quanLyDuLichDataSet.AgencyForClient' table. You can move, or remove it, as needed.
-            this.agencyForClientTableAdapter.Fill(this.quanLyDuLichDataSet.AgencyForClient);
+
             string conStr = "Data Source=DESKTOP-7CBSM7T\\HENDRICHS;Initial Catalog=QuanLyDuLich;Integrated Security=True";
             SqlConnection con = new SqlConnection(conStr);
-            string query = "select * from AgencyForClient";
+            string query = "select * from AGENCYFORAdmin";
             SqlCommand command = new SqlCommand(query, con);
             SqlDataAdapter a = new SqlDataAdapter(command);
             DataTable data = new DataTable();
@@ -43,9 +51,6 @@ namespace QuanLyCongTyDuLich
                 {
                     if(AgencyGribView.Rows[i].Selected == true)
                     {
-
-                        // string tentrip;
-                        // int soluong;
                         string ten = AgencyGribView.Rows[i].Cells["TenDaiLy"].ToString();
                         Display(ten);
                         
@@ -56,18 +61,55 @@ namespace QuanLyCongTyDuLich
                 }
             }
 
-            string truyvan = "select * from portiontripclient where KhuyenMai = 'Non Working'";
+            string truyvan = "select * from ChuyenDi where TinhTrang = 'Sold Out'";
             SqlCommand sqlCommand = new SqlCommand(truyvan, con);
             SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand);
             DataTable hethang = new DataTable();
             adapter.Fill(hethang);
             SoldOutGridView.DataSource = hethang;
-            string query5 = "select * from PortionTripClient where KhuyenMai = 'Future Trip'";
+            string query5 = "select * from ChuyenDi where TinhTrang = 'Future Trip'";
             SqlCommand command1 = new SqlCommand(query5, con);
             SqlDataAdapter adapter1 = new SqlDataAdapter(command1);
             DataTable tuonglai = new DataTable();
             adapter1.Fill(tuonglai);
             FutureTripGribView.DataSource = tuonglai;
+
+            string sieukhuyenmai = "select * from ChuyenDi where TinhTrang = 'Hot Sale'";
+            SqlCommand command2 = new SqlCommand(sieukhuyenmai, con);
+            SqlDataAdapter adapter2 = new SqlDataAdapter(command2);
+            DataTable hientai = new DataTable();
+            adapter2.Fill(hientai);
+            HotSaleGribView.DataSource = hientai;
+
+            string khachhang = "select TENTAIKHOAN , Emails from AccountForClient ";
+            SqlCommand command3 = new SqlCommand(khachhang, con);
+            SqlDataAdapter adapter3 = new SqlDataAdapter(command3);
+            DataTable khach = new DataTable();
+            adapter3.Fill(khach);
+            CustomerGribView.DataSource = khach;
+
+            string thongtindathang = "select go.TenDaiLy, go.TenDiaDiem , ibt.TenTaiKhoan , go.HuongDanVien, go.DichVuFree , go.Giaien from TripAvailable trip , ChuyenDi go , InforBookTrip ibt ";
+            SqlCommand command5 = new SqlCommand(thongtindathang, con);
+            SqlDataAdapter adapter5 = new SqlDataAdapter(command5);
+            DataTable dathang2 = new DataTable();
+            adapter5.Fill(dathang2);
+            OrderGribView.DataSource = dathang2;
+
+            string nhanvien = "Select * From HuongDanVien";
+            SqlCommand command4 = new SqlCommand(nhanvien, con);
+            SqlDataAdapter adapter4 = new SqlDataAdapter(command4);
+            DataTable guides = new DataTable();
+            adapter4.Fill(guides);
+            for (int i = 0; i < EmployGribView.Columns.Count; i++)
+            {
+                if (EmployGribView.Columns[i] is DataGridViewImageColumn)
+                {
+                    ((DataGridViewImageColumn)EmployGribView.Columns[i]).ImageLayout = DataGridViewImageCellLayout.Stretch;
+                        break;
+                }
+            }
+            EmployGribView.DataSource = guides;
+
         }
         // To Encrypt Password before put out it 
         public string Encrypt(string toEncrypt)
@@ -101,46 +143,7 @@ namespace QuanLyCongTyDuLich
          */
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"D:\Lesson\RIT\C #\Winform\TravelAgency\QuanLyCongTyDuLich\DocumentsForHelp\ChiTietPhanMem.docx");
-            // Check File If It doesn't exist
-            if (!File.Exists(path))
-            {
-
-                // create new file to anounmance
-                using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.Write, FileShare.None))
-                {
-                    Byte[] thongtin = new UTF8Encoding(true).GetBytes("404!!! \n Not Foud \n Lỗi này có thể tồn tại khi bạn thay đổi vị trí địa phương, vui lòng kiểm tra và thay thế địa chỉ để giải quyết nó");
-                    fs.Write(thongtin, 0, thongtin.Length);
-
-                }
-            }
-            // open it and read
-            using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.Write, FileShare.None))
-            {
-                Byte[] b = new byte[1024];
-                UTF8Encoding temp = new UTF8Encoding(true);
-
-                while (fs.Read(b, 0, b.Length) > 0)
-                {
-                    Console.WriteLine(temp.GetString(b));
-                }
-
-                try
-                {
-                    using (FileStream fs2 = File.Open(path, FileMode.Open))
-                    {
-                        while (fs.Read(b, 0, b.Length) > 0)
-                        {
-                            MessageBox.Show(temp.GetString(b));
-                        }
-                    }
-                }
-                catch (Exception a)
-                {
-                    MessageBox.Show("Vui lòng đóng tệp trước để tiếp tục \n Việc mở tệp hai lần là không được phép. \n As Expected: " + a.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-            }
+            System.Diagnostics.Process.Start(@"D:\Lesson\RIT\C #\ABC\QuanLyCongTyDuLich\DocumentsForHelp\ChiTietPhanMem.docx");
 
         }
 
@@ -163,21 +166,16 @@ namespace QuanLyCongTyDuLich
 // Exit program too
         private void TrangChu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var res = MessageBox.Show("Bạn có muốn lưu dữ liệu trước khi thoát ứng dụng ?", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            
+            var res = MessageBox.Show("Do You Want To Exit", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
             switch (res)
             {
-                case DialogResult.Yes:
-                    string conStr = "Data Source=DESKTOP-7CBSM7T\\HENDRICHS;Initial Catalog=QuanLyDuLich;Integrated Security=True";
-                    SqlConnection con = new SqlConnection(conStr);
-                    string query = "update ";
-                    SqlCommand command = new SqlCommand(query, con);
-                    SqlDataAdapter a = new SqlDataAdapter(command);
-                    DataTable data = new DataTable();
-                    Form moi = Application.OpenForms[0];
-                    moi.Left = this.Left;
-                    moi.Top = this.Top;
-                    moi.Show();
-                    Application.Exit();
+                case DialogResult.OK:
+                    System.Windows.Forms.Application.Exit();
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
                     break;
             }
         }
@@ -205,93 +203,17 @@ namespace QuanLyCongTyDuLich
 
         private void privacyAndLiceneseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"D:\Lesson\RIT\C #\Winform\TravelAgency\QuanLyCongTyDuLich\DocumentsForHelp\License.txt");
-            // Check File If It doesn't exist
-            if (!File.Exists(path))
-            {
-                // create new file to anounmance
-                using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.Write, FileShare.None))
-                {
-                    Byte[] thongtin = new UTF8Encoding(true).GetBytes("404 !!! \n Không tìm thấy \n Lỗi này có thể tồn tại khi bạn thay đổi vị trí cục bộ, vui lòng kiểm tra và thay đổi địa chỉ để giải quyết nó");
-                    fs.Write(thongtin, 0, thongtin.Length);
-
-                }
-            }
-            // open it and read
-            using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.Write, FileShare.None))
-            {
-                Byte[] b = new byte[1024];
-                UTF8Encoding temp = new UTF8Encoding(true);
-
-                while (fs.Read(b, 0, b.Length) > 0)
-                {
-                    Console.WriteLine(temp.GetString(b));
-                }
-
-                try
-                {
-                    using (FileStream fs2 = File.Open(path, FileMode.Open))
-                    {
-                        while (fs.Read(b, 0, b.Length) > 0)
-                        {
-                            MessageBox.Show(temp.GetString(b));
-                        }
-                    }
-                }
-                catch (Exception a)
-                {
-                    MessageBox.Show("Vui lòng đóng tệp trước để tiếp tục \n Việc mở tệp hai lần là không được phép. \n as Expected: " + a.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-            }
+            System.Diagnostics.Process.Start(@"D:\Lesson\RIT\C #\ABC\QuanLyCongTyDuLich\DocumentsForHelp\License.txt");
         }
 
         private void globallyForQuestionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"D:\Lesson\RIT\C #\Winform\TravelAgency\QuanLyCongTyDuLich\DocumentsForHelp\License.txt");
-            // Check File If It doesn't exist
-            if (!File.Exists(path))
-            {
-                // create new file to anounmance
-                using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.Write, FileShare.None))
-                {
-                    Byte[] thongtin = new UTF8Encoding(true).GetBytes("404 !!! \n Không tìm thấy \n Lỗi này có thể tồn tại khi bạn thay đổi vị trí cục bộ, vui lòng kiểm tra và thay đổi địa chỉ để giải quyết nó");
-                    fs.Write(thongtin, 0, thongtin.Length);
-
-                }
-            }
-            // open it and read
-            using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.Write, FileShare.None))
-            {
-                Byte[] b = new byte[1024];
-                UTF8Encoding temp = new UTF8Encoding(true);
-
-                while (fs.Read(b, 0, b.Length) > 0)
-                {
-                    Console.WriteLine(temp.GetString(b));
-                }
-
-                try
-                {
-                    using (FileStream fs2 = File.Open(path, FileMode.Open))
-                    {
-                        while (fs.Read(b, 0, b.Length) > 0)
-                        {
-                            MessageBox.Show(temp.GetString(b));
-                        }
-                    }
-                }
-                catch (Exception a)
-                {
-                    MessageBox.Show("Vui lòng đóng tệp trước để tiếp tục \n Việc mở tệp hai lần là không được phép. \n as Expected: " + a.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-            }
+            System.Diagnostics.Process.Start(@"D:\Lesson\RIT\C #\ABC\QuanLyCongTyDuLich\DocumentsForHelp\Question.txt");
         }
         void loadTripInAgencyGridView()
         {
             SqlConnection cnn = new SqlConnection(cStr);
-            string query1 = "select TenTrip , SoLuong from PortionTripClient ";
+            string query1 = "select TenDiaDiem ,TinhTrang , SoLuong from ChuyenDi ";
             SqlCommand command1 = new SqlCommand(query1, cnn);
             SqlDataAdapter b = new SqlDataAdapter(command1);
             DataTable table = new DataTable();
@@ -303,7 +225,7 @@ namespace QuanLyCongTyDuLich
         private void Display(string TenDaiLy)
         {
             SqlConnection cnn = new SqlConnection(cStr);
-            string query1 = "select TenTrip , SoLuong from PortionTripClient where TenDaiLy in (select TenDaiLy from AgencyForClient where TenDaiLy = @tendaily) ";
+            string query1 = "select TenDiaDiem, TinhTrang , SoLuong from ChuyenDi where TenDaiLy in (select TenDaiLy from AGENCYFORAdmin where TenDaiLy = @tendaily) ";
             SqlCommand command1 = new SqlCommand(query1, cnn);
             command1.Parameters.AddWithValue("@tendaily", TenDaiLy);
             SqlDataAdapter b = new SqlDataAdapter(command1);
@@ -313,7 +235,37 @@ namespace QuanLyCongTyDuLich
         }
         private void ForBibButton_Click(object sender, EventArgs e)
         {
-
+            SqlConnection con = new SqlConnection(cStr);
+            if (CustomerGribView.Rows.Count > 0)
+            {
+                for (int i = 0; i < CustomerGribView.Rows.Count; i++)
+                {
+                    if (CustomerGribView.Rows[i].Selected == true)
+                    {
+                        break;
+                    }
+                    else if (i + 1 == CustomerGribView.Rows.Count)
+                    {
+                        CustomerGribView.Rows[0].Selected = true;
+                    }
+                }
+                var xoaclient = CustomerGribView.SelectedRows[0];
+                var res = MessageBox.Show($"Do you want to delete Client {xoaclient.Selected.ToString()} ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (res == DialogResult.Yes)
+                {
+                    string xoacustomer = "Delete from AccountForClient where TenTaiKhoan = @tentaikhoan";
+                    SqlCommand command = new SqlCommand(xoacustomer, con);
+                    command.Parameters.AddWithValue("@tentaikhoan", xoaclient.Selected.ToString());
+                    SqlDataAdapter a = new SqlDataAdapter(command);
+                    DataTable data = new DataTable();
+                    a.Fill(data);
+                    CustomerGribView.DataSource = data;
+                }
+            }
+            else
+            {
+                MessageBox.Show("The list of clients is empty( Banning from app is impossible");
+            }
         }
         //
         private void AgencyGribView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -329,15 +281,104 @@ namespace QuanLyCongTyDuLich
         }
         private void SaveCompleteOrders()
         {
-            string filepath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"D:\Lesson\RIT\C #\Winform\TravelAgency\QuanLyCongTyDuLich\DataCustomer(HistoryWork)");
-            using (var wr = new StreamWriter(filepath))
-            {
-                wr.WriteLine("--------------------------");
-                wr.WriteLine();
+            string path = @"D:\Lesson\RIT\C #\ABC\QuanLyCongTyDuLich\DataCustomer(HistoryWork)\CompleteSave.docx";
 
-                
+            try
+            {
+                // Check if file already exists. If yes, delete it.     
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+
+                //Create New File
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    // Add To Text
+                    sw.WriteLine("-----------------------------");
+                    sw.WriteLine("^^-------------------------^^");
+                    sw.WriteLine("^^^^^^^^^^---------^^^^^^^^^^");
+                    sw.WriteLine();
+                    sw.WriteLine("Ho Va Ten");
+                }
+            }
+            catch
+            {
+
             }
         }
+
+        private void TripInAgencyGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(cStr);
+            if (AgencyGribView.Rows.Count > 0)
+            {
+                var xoadaily = AgencyGribView.SelectedRows[0];
+                var res = MessageBox.Show($"Do you Want to delete {AgencyGribView.SelectedRows.ToString()} Agency", "Warning", MessageBoxButtons.YesNo , MessageBoxIcon.Warning);
+                if (res == DialogResult.Yes)
+                {
+                    string xoa = "delete From AgencyForClient where TenDaiLy = @tendaily";
+                    SqlCommand command = new SqlCommand(xoa, con);
+                    command.Parameters.AddWithValue("@tendaily", AgencyGribView.SelectedRows.ToString());
+                    SqlDataAdapter a = new SqlDataAdapter(command);
+                    DataTable data = new DataTable();
+                    a.Fill(data);
+                    AgencyGribView.DataSource = data;
+                }
+            }
+        }
+
+        private void EmployGribView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (EmployGribView.Rows.Count > 0)
+            {
+                for (int i = 0; i < EmployGribView.Rows.Count; i++)
+                {
+
+                }
+            }
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void OrderGribView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            if ( index >= 0)
+            {
+               string thongting = OrderGribView.Rows[index].Cells[1].Value.ToString();
+            }
+        }
+
+        private void CustomerGribView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            if (index >= 0)
+            {
+                string ten = CustomerGribView.Rows[index].Cells["TenTaiKhoan"].Value.ToString();
+                DonDatHang(ten);
+            }
+        }
+        private void DonDatHang(string TenTaiKhoan)
+        {
+            SqlConnection connection = new SqlConnection(cStr);
+            string thongtindathang = "select go.TenDaiLy, go.TenDiaDiem , ibt.TenTaiKhoan , go.HuongDanVien, go.DichVuFree , go.Giaien from TripAvailable trip , ChuyenDi go , InforBookTrip ibt Where  trip.TenDiaDiem = go.TenDiaDiem And go.MaChuyen = ibt.MaChuyen anf ibt.TenTaiKhoan = @tentaikhoan";
+            SqlCommand command5 = new SqlCommand(thongtindathang, connection);
+            command5.Parameters.AddWithValue("@tentaikhoan", TenTaiKhoan);
+            SqlDataAdapter adapter5 = new SqlDataAdapter(command5);
+            DataTable dathang2 = new DataTable();
+            adapter5.Fill(dathang2);
+            OrderGribView.DataSource = dathang2;
+        }
+        
     }
     
 }
